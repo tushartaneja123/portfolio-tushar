@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-follower" id="cursorFollower"></div>
-
   <nav>
     <div class="nav-logo">TT<span>.</span></div>
     <ul class="nav-links">
@@ -381,30 +378,6 @@
   </footer>
 
   <script>
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursorFollower');
-    let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
-
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      cursor.style.left = mouseX - 6 + 'px';
-      cursor.style.top = mouseY - 6 + 'px';
-    });
-
-    function animateFollower() {
-      followerX += (mouseX - followerX) * 0.12;
-      followerY += (mouseY - followerY) * 0.12;
-      follower.style.left = followerX - 18 + 'px';
-      follower.style.top = followerY - 18 + 'px';
-      requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
-
-    document.querySelectorAll('a, button, .project-card, .skill-card').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2.5)'; follower.style.transform = 'scale(1.5)'; });
-      el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; follower.style.transform = 'scale(1)'; });
-    });
-
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry, i) => {
